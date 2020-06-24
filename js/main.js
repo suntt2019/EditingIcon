@@ -1,2 +1,3 @@
 alert('yo')
-$('#yo').addClass('red')
+//$('#yo').addClass('red')
+document.getElementById("yo").style.color="green";
