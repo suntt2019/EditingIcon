@@ -1,3 +1,24 @@
-.red{
-    color: red;
+canvas{
+    border: 1px solid black;
+}
+img{
+    display: none;
+}
+.maskOptions{
+    background: transparent;
+    border: lightgray solid 2px;
+    outline:none !important;
+    padding: 2px;
+}
+.maskOptions>img {
+    width: 128px;
+    height: 128px;
+    display: block;
+}
+.chosen{
+    border: black solid 2px;
+}
+
+.active{
+    background: firebrick;
 }
