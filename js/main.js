@@ -51,13 +51,35 @@ let isMouseDown = false;
 document.addEventListener("mousedown",function(e){
     isMouseDown = true;
 });
-document.addEventListener("mouseup",function(e){
-    isMouseDown = false;
+document.addEventListener("touchstart",function(e){
+    isMouseDown = true;
 });
 
+document.addEventListener("mouseup",function(e){
+    isMouseDown = false;
+    cmX=-1;
+    cmY=-1;
+    new_cmX=-1;
+    new_cmY=-1;
+});
+document.addEventListener("touchend",function(e){
+    isMouseDown = false;
+    cmX=-1;
+    cmY=-1;
+    new_cmX=-1;
+    new_cmY=-1;
+});
 
 cover_ctx.drawImage(input_img[0],0,0,ICON_SL,ICON_SL);
-cover_canvas.addEventListener("mousemove", function(e) {
+
+cover_canvas.addEventListener("touchmove", function(e){
+    cover_move(e.touches[0].pageX,e.touches[0].pageY);
+});
+cover_canvas.addEventListener("mousemove", function(e){
+    cover_move(e.clientX,e.clientY);
+});
+
+function cover_move(x,y){
     if(!isMouseDown) {
         cmX=-1;
         cmY=-1;
@@ -65,8 +87,8 @@ cover_canvas.addEventListener("mousemove", function(e) {
         new_cmY=-1;
         return;
     }
-    new_cmX = e.clientX - cRect.left;
-    new_cmY = e.clientY - cRect.top;
+    new_cmX = x - cRect.left;
+    new_cmY = y - cRect.top;
     if(cmX>=0&&new_cmX>=0)//to prevent illegal input
         cover_pic_X += new_cmX - cmX;
     if(cmY>=0&&new_cmY>=0)
@@ -77,18 +99,18 @@ cover_canvas.addEventListener("mousemove", function(e) {
     cmY = new_cmY;
 
     paint();
+}
 
-});
 
 function paint(){
     //alert('paint');
     // console.log(input_img);
     cover_ctx.drawImage(input_img[0],0,0,ICON_SL,ICON_SL);
     draw_image(mask_imgs[chosen_mask_id][0],cover_pic_X,cover_pic_Y,scaling_rate);
-    // cover_ctx.fillText("delta_X: "+(new_cmX-cmX)+", delta_Y: "+(new_cmY-cmY), 10, 110);
-    // cover_ctx.fillText("X: "+cover_pic_X+", Y: "+cover_pic_Y, 10, 20);
-    // cover_ctx.fillText("cmX: "+cmX+", cmY: "+cmY, 10, 50);
-    // cover_ctx.fillText("new_cmX: "+new_cmX+", new_cmY: "+new_cmY, 10, 80);
+    cover_ctx.fillText("delta_X: "+(new_cmX-cmX)+", delta_Y: "+(new_cmY-cmY), 10, 110);
+    cover_ctx.fillText("X: "+cover_pic_X+", Y: "+cover_pic_Y, 10, 20);
+    cover_ctx.fillText("cmX: "+cmX+", cmY: "+cmY, 10, 50);
+    cover_ctx.fillText("new_cmX: "+new_cmX+", new_cmY: "+new_cmY, 10, 80);
 }
 
 function draw_image(img,or_x,or_y,rate){
@@ -100,8 +122,12 @@ function draw_image(img,or_x,or_y,rate){
     cover_ctx.drawImage(img,x,y,w,h);
 }
 
+scaling_slider.touch
 
-
+scaling_slider.mousemove(updateScaling);
+scaling_slider[0].addEventListener('touchmove',function(e){
+    updateScaling();
+});
 scaling_slider.mousemove(updateScaling);
 scaling_slider.mouseup(updateScaling);
 
