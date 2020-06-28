@@ -1,23 +1,36 @@
 canvas{
     border: 1px solid black;
 }
+
 #input_img{
     display: none;
 }
+
 .maskOptions{
-    background: transparent;
-    border: lightgray solid 2px;
+    background: white;
+    border: lightgray solid 3px;
     outline:none !important;
     padding: 2px;
+    margin: 10px;
 }
 .maskOptions>img {
     width: 128px;
     height: 128px;
 }
 .chosen{
-    border: black solid 2px;
+    border: black solid 3px;
 }
 
 .active{
     background: firebrick;
+}
+.container{
+    display: block;
+    max-width: 1440px;
+    margin: 0px auto;
+}
+.part{
+    padding: 10px;
+    border: darkgray solid 5px;
+    margin: 20px 0px;
 }
