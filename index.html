@@ -9,51 +9,42 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-2 part">
-                <h1>上传</h1>
-                <!--头像读取框-->
-                <input type="file" id="input_input" accept="image/*">
+        <h1 class="title">一起为村儿2020高考助力</h1>
+        <!--模板选择区域-->
+        <div id="mask_btns_div"></div>
 
-                <!--头像框（隐藏的）-->
-                <div>
-                    <img src="image/default_icon.png" id="input_img">
-                </div>
-            </div>
-            <div class="col-lg-6 part">
-                <h1>编辑</h1>
-                <!--核心操作框-->
-                <canvas id="cover_canvas" width="256" height="256"></canvas>
-                <br>
-                <label>原头像缩放：</label>
-                <!--缩放调节滑块-->
-                <input type="range" id="scaling_slider">
-                <!--缩放比例显示-->
-                <label id="scaling_value">100%</label>
-                <br>
-                <!--模板选择区域-->
-                <div id="mask_btns_div"></div>
-                <br>
-                <!--功能按钮-->
-                <button id="reset">重置</button>
-                <!--<button id="reset_when_switching_masks">切换模板时自动重置</button>-->
-                <!--button id="reset_when_switching_icon">切换原头像时自动重置</button>-->
-                <button id="save">确定</button>
-                <!--下载按钮区-->
-                <!--<div id="save_btns"></div>-->
-            </div>
-            <div class="col-lg-4 part">
-                <h1>下载</h1>
-                <h3>长按图片保存</h3>
-                <div id="result_div"></div>
-            </div>
+        <!--头像框（隐藏的）-->
+        <div>
+            <img src="image/default_icon.jpg" id="input_img">
+        </div>
+        <!--核心操作框-->
+        <canvas id="cover_canvas" width="256" height="256"></canvas>
+        <!--<label>原头像缩放：</label>-->
+        <!--缩放调节滑块-->
+        <input type="range" id="scaling_slider">
+        <!--缩放比例显示-->
+        <label id="scaling_value" hidden>100%</label>
+
+        <!--功能按钮-->
+        <div id="edit_btns">
+            <button id="input_btn" class="edit_btn_0">选择底图</button><button id="save" class="edit_btn_1">生成头像</button>
+            <button id="input_random" class="edit_btn_2">随机预设</button><button id="reset" class="edit_btn_3">重置调整</button>
+            <!--<button id="reset_when_switching_masks">切换模板时自动重置</button>-->
+            <!--button id="reset_when_switching_icon">切换原头像时自动重置</button>-->
+            <!--下载按钮区-->
+            <!--<div id="save_btns"></div>-->
+            <!--头像读取框-->
+            <input type="file" id="input_input" accept="image/*" hidden>
+        </div>
+        <div>
+            <a id="footer" href="https://github.com/suntt2019/EditingIcon">
+                版权所有©中关村中学雨燕机器人社
+                <img id="swift_logo" src="image/swift_logo.png">
+            </a>
+
+            <div id="result_div"></div>
         </div>
     </div>
-<!--    <div class="row">-->
-<!--        <div class="col-md-2">11111111111111111111111111111111111111111111111111</div>-->
-<!--        <div class="col-md-6">22222222222222222222222222222222222222222222222222</div>-->
-<!--        <div class="col-md-4">33333333333333333333333333333333333333333333333333</div>-->
-<!--    </div>-->
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/jcanvas.min.js"></script>
     <script src="js/main.js"></script>

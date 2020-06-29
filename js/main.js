@@ -1,7 +1,9 @@
-const ICON_SL = 512;//SL:side length
+const ICON_SL = Math.round($('body').height()*35/100);//SL:side length
+//
 const SCALING_RATE_LIM = 4;//limit of scaling rate
 //SCALING_RATE_LIM=x,limit= 1/x ~ x
 //for example: SCALING_RATE_LIM=4, scaling limit=25%~400%
+const RANDOM_ICON_CNT = 4;
 const mask_names = [
     "chongya_black",
     "chongya_white",
@@ -113,7 +115,7 @@ function cover_move(x,y){
 function paint(){
     //alert('paint');
     // console.log(input_img);
-    cover_ctx.fillStyle="black";
+    cover_ctx.fillStyle ="white";
     cover_ctx.fillRect(0, 0, cover_canvas.width, cover_canvas.height);
     draw_image(input_img[0],cover_pic_X,cover_pic_Y,input_ssr * or_rate);
     cover_ctx.drawImage(mask_imgs[chosen_mask_id][0],0,0,ICON_SL,ICON_SL);
@@ -256,3 +258,27 @@ $('#save').click(function(){
     image.src = cover_canvas.toDataURL("image/png");
     $('#result_div').html(image);
 });
+
+$('#input_btn').click(function () {
+    $('#input_input').click();
+    random_icon_id=-1;
+});
+
+let random_icon_id=-1,random_icon_id_buf;
+$('#input_random').click(function(){
+    if(random_icon_id===-1) {
+        random_icon_id = Math.floor(Math.random() * RANDOM_ICON_CNT);
+    }else{
+        random_icon_id_buf = Math.floor(Math.random()*(RANDOM_ICON_CNT-1));
+        if(random_icon_id_buf >= random_icon_id)
+            random_icon_id = random_icon_id_buf+1;
+        else
+            random_icon_id = random_icon_id_buf;
+    }
+    console.log(random_icon_id);
+});
+
+
+document.body.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, {passive: false});
