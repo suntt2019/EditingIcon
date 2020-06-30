@@ -345,12 +345,11 @@ $('#input_random').click(function(){
     console.log(random_icon_id);
     input_img.attr("src",'image/random_icon/'+RANDOM_ICON_NAMES[random_icon_id]);
     input_img.ready(function() {
-        setTimeout(function(){
+        input_img[0].onload =function(){
             let input_min_side = Math.min(input_img.width(),input_img.height());
             input_ssr = ICON_SL / input_min_side;
             reset();
-
-        },100);
+        };
     });
 });
 

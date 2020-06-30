@@ -146,7 +146,7 @@ body{
     font-size: calc(var(--vh) * 2.5);
     letter-spacing: calc(var(--vh) * 1);
     margin: calc(var(--vh) * 14.8 + 4px) auto calc(var(--vh) * 3) auto;
-    width: calc(var(--vh) * 17.5);
+    width: calc(var(--vh) * 18.5);
     animation: twink 1s infinite alternate ease;
 }
 @keyframes twink {
