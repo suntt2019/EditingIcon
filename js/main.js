@@ -1,3 +1,6 @@
+alert($('body').height());
+alert(window.innerHeight);
+document.documentElement.style.setProperty('--vh', window.innerHeight/100+"px");
 const ICON_SL = Math.round($('body').height()*35/100);//SL:side length
 //
 const SCALING_RATE_LIM = 4;//limit of scaling rate
@@ -17,6 +20,10 @@ const OUTPUT_SL = 512;
 //     512,
 //     1024
 // ];
+
+
+// $('.container').setProperty('-vh',window.innerHeight * 0.01 + 'px');
+
 
 let chosen_mask_id=0;
 let input_img = $("#input_img");
@@ -282,3 +289,5 @@ $('#input_random').click(function(){
 document.body.addEventListener('touchmove', function (e) {
     e.preventDefault();
 }, {passive: false});
+
+

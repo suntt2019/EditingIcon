@@ -5,7 +5,9 @@
          url("../font/qing_ke_butter.ttf");
 }
 
-
+:root{
+    --vh: 2px;
+}
 
 body{
     background: #b1d6f3;
@@ -16,48 +18,32 @@ body{
     display: none;
 }
 
-
-
 .active{
     background: firebrick;
 }
 .container{
     display: block;
-    height: 100vh;
-    max-width: 67vh;
     margin: 0 auto;
     background-image:url('../image/background.jpg');
     background-size: cover;
 }
 
+
+
 .title{
     font-family: qing_ke_butter, sans-serif;
-    font-size: 3.5vh;
-    padding: 8vh 0 0 0;
-    margin: 0vh auto 3vh auto;
-    max-width: 45.5vh;
-    letter-spacing: 1vh;
 }
 
 
-#mask_btns_div{
-    margin: 5vh auto 3vh auto;
-    width: 42vh;
-}
+
 
 .maskOptions{
     background: rgba(255,255,255,0.2);
     border: #3ba4ff solid 1px;
     outline:none !important;
-    width: 11vh;
-    height: 11vh;
-    margin: 1.5vh;
     padding: 0;
 }
-.maskOptions>img {
-    width: 10vh;
-    height: 10vh;
-}
+
 
 .chosen{
     border: #3ba4ff solid 2px;
@@ -71,9 +57,6 @@ body{
 }
 
 #scaling_slider{
-    width: 15vh;
-    height: 3vh;
-    margin: 1vh auto 1vh auto;
     display: block;
     /*-webkit-appearance: none;*/
     background: transparent;
@@ -90,17 +73,10 @@ input[type=range]::-webkit-slider-runnable-track{
 }
 
 
-#edit_btns{
-    margin: 5vh auto 5vh auto;
-    width: 28vh;
-}
+
 
 #edit_btns>button{
     font-family: qing_ke_butter, sans-serif;
-    font-size: 2.5vh;
-    letter-spacing: 0.6vh;
-    width: 14vh;
-    height: 5vh;
     padding: 0 1px 0 1px;
     margin: 0;
     background: transparent;
@@ -126,15 +102,67 @@ input[type=range]::-webkit-slider-runnable-track{
 #footer{
     color: #1c5b88;
     text-decoration: none;
-    margin: 6.5vh auto 2vh auto;
-    width: 31vh;
     display: block;
-    font-size: 1.5vh;
-    letter-spacing: 0.2vh;
+}
+
+/****************/
+
+.container{
+    height: calc(var(--vh) * 100);
+    max-width: calc(var(--vh) * 67);
+}
+
+.title{
+    font-size: calc(var(--vh) * 3.5);
+    padding: calc(var(--vh) * 8) 0 0 0;
+    margin: 0vh auto calc(var(--vh) * 3) auto;
+    max-width: calc(var(--vh) * 45.5);
+    letter-spacing: calc(var(--vh) * 1);
+}
+
+#mask_btns_div{
+    margin: calc(var(--vh) * 5) auto calc(var(--vh) * 3) auto;
+    width: calc(var(--vh) * 42);
+}
+
+.maskOptions{
+    width: calc(var(--vh) * 11);
+    height: calc(var(--vh) * 11);
+    margin: calc(var(--vh) * 1.5);
+}
+
+.maskOptions>img {
+    width: calc(var(--vh) * 10);
+    height: calc(var(--vh) * 10);
+}
+
+#scaling_slider{
+    width: calc(var(--vh) * 15);
+    height: calc(var(--vh) * 3);
+    margin: calc(var(--vh) * 1) auto calc(var(--vh) * 1) auto;
+}
+
+#edit_btns{
+    margin: calc(var(--vh) * 5) auto calc(var(--vh) * 5) auto;
+    width: calc(var(--vh) * 28);
+}
+
+#edit_btns>button{
+    font-size: calc(var(--vh) * 2.5);
+    letter-spacing: calc(var(--vh) * 0.6);
+    width: calc(var(--vh) * 14);
+    height: calc(var(--vh) * 5);
+}
+
+#footer{
+    margin: calc(var(--vh) * 6.5) auto calc(var(--vh) * 2) auto;
+    width: calc(var(--vh) * 31);
+    font-size: calc(var(--vh) * 1.5);
+    letter-spacing: calc(var(--vh) * 0.2);
 }
 
 #swift_logo{
-    width: 3vh;
-    height: 3vh;
+    width: calc(var(--vh) * 3);
+    height: calc(var(--vh) * 3);
 
 }
