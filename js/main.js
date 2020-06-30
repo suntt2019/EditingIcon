@@ -39,9 +39,9 @@ const OUTPUT_SL = 512;
 let chosen_mask_id=0;
 let input_img = $("#input_img");
 const scaling_slider = $('#scaling_slider');
-const scaling_ctx = scaling_slider[0].getContext("2d");
-const scaling_rect = scaling_slider[0].getBoundingClientRect();
-console.log(scaling_rect);
+// const scaling_ctx = scaling_slider[0].getContext("2d");
+// const scaling_rect = scaling_slider[0].getBoundingClientRect();
+// console.log(scaling_rect);
 const cover_canvas = document.getElementById("cover_canvas");
 const cover_ctx = cover_canvas.getContext("2d");
 let cmX, cmY, new_cmX, new_cmY, cover_pic_X = ICON_SL/2, cover_pic_Y = ICON_SL/2;//cmX=cover_mouse_X
@@ -138,7 +138,7 @@ function paint(){
     // console.log(input_img);
     cover_ctx.fillStyle ="white";
     cover_ctx.fillRect(0, 0, cover_canvas.width, cover_canvas.height);
-    draw_image(input_img[0],cover_pic_X,cover_pic_Y,input_ssr);
+    draw_image(input_img[0],cover_pic_X,cover_pic_Y,input_ssr * or_rate);
     cover_ctx.drawImage(mask_imgs[chosen_mask_id][0],0,0,ICON_SL,ICON_SL);
 
     // cover_ctx.fillText("delta_X: "+(new_cmX-cmX)+", delta_Y: "+(new_cmY-cmY), 10, 110);
@@ -159,59 +159,73 @@ function draw_image(img,or_x,or_y,rate){
 }
 
 
-scaling_slider[0].addEventListener("mousemove",scaling_mouse);
+// scaling_slider[0].addEventListener("mousemove",scaling_mouse);
+//
+//
+// scaling_slider[0].addEventListener('touchmove',scaling_touch);
+// scaling_slider[0].addEventListener('touchstart',scaling_touch);
+//
+// scaling_slider.mousemove();
+
+scaling_slider.mousemove(updateScaling);
+scaling_slider[0].addEventListener('touchmove',function(e){
+    updateScaling();
+});
+scaling_slider.mousemove(updateScaling);
+scaling_slider.mouseup(updateScaling);
 
 
-scaling_slider[0].addEventListener('touchmove',scaling_touch);
-scaling_slider[0].addEventListener('touchstart',scaling_touch);
-
-scaling_slider.mousemove();
-
-
-
-
-function scaling_touch(e){
-    //console.log(e.touches.length,e.type);
-    console.log(e.touches[0].pageX);
-    // if(e.touches[0].pageX%1!==0||e.touches[0].pageY%1!==0)
-    //     return;
-    updateScaling(e.touches[0].pageX);
-}
-
-function scaling_mouse(e){
-    if(isMouseDown)
-        updateScaling(e.clientX);
-}
-
+// function scaling_touch(e){
+//     //console.log(e.touches.length,e.type);
+//     console.log(e.touches[0].pageX);
+//     if(e.touches[0].pageX%1!==0||e.touches[0].pageY%1!==0)
+//         return;
+//     updateScaling(e.touches[0].pageX);
+// }
+//
+// function scaling_mouse(e){
+//     if(isMouseDown)
+//         updateScaling(e.clientX);
+// }
+//
+// let scaling_value = 50,scaling_rate,or_rate;
+// let vsw,vsh;
+// function updateScaling(x){
+//     vsw = scaling_slider[0].width/100,vsh=scaling_slider[0].height/100;
+//     scaling_value = (x - scaling_rect.left) *100 / scaling_rect.width;
+//     // if(scaling_value<10||scaling_value>90)
+//     //     return;
+//     console.log(scaling_value,x);
+//     scaling_ctx.fillStyle="#d7d7d7";
+//     scaling_ctx.clearRect(0,0, scaling_slider[0].width,scaling_slider[0].height);
+//     scaling_ctx.beginPath();
+//     scaling_ctx.arc(10*vsw,50*vsh,100*vsh/6,Math.PI*2,0,true);
+//
+//     scaling_ctx.closePath();
+//     scaling_ctx.fill();
+//     scaling_ctx.fillRect(scaling_slider[0].width*0.1, scaling_slider[0].height/3, scaling_slider[0].width*0.8, scaling_slider[0].height/3);
+//     scaling_ctx.fillStyle="#41cdfa";
+//     scaling_ctx.beginPath();
+//     scaling_ctx.arc(90*vsw,50*vsh,100*vsh/6,Math.PI*2,0,true);
+//     scaling_ctx.arc(scaling_value*vsw,50*vsh,30*vsh,Math.PI*2,0,true);
+//     scaling_ctx.closePath();
+//     scaling_ctx.fill();
+//     or_rate = Math.pow(SCALING_RATE_LIM,((scaling_value / 50) -1));
+//     $('#scaling_value').text(Math.round(or_rate*100)+'%');
+//     paint();
+// }
+//
+// scaling_slider.width(window.innerHeight*20/100);
+// scaling_slider.height(window.innerHeight*3/100);
 let scaling_value = 50,scaling_rate,or_rate;
-let vsw,vsh;
-function updateScaling(x){
-    vsw = scaling_slider[0].width/100,vsh=scaling_slider[0].height/100;
-    scaling_value = (x - scaling_rect.left) *100 / scaling_rect.width;
-    // if(scaling_value<10||scaling_value>90)
-    //     return;
-    console.log(scaling_value,x);
-    scaling_ctx.fillStyle="#d7d7d7";
-    scaling_ctx.clearRect(0,0, scaling_slider[0].width,scaling_slider[0].height);
-    scaling_ctx.beginPath();
-    scaling_ctx.arc(10*vsw,50*vsh,100*vsh/6,Math.PI*2,0,true);
 
-    scaling_ctx.closePath();
-    scaling_ctx.fill();
-    scaling_ctx.fillRect(scaling_slider[0].width*0.1, scaling_slider[0].height/3, scaling_slider[0].width*0.8, scaling_slider[0].height/3);
-    scaling_ctx.fillStyle="#41cdfa";
-    scaling_ctx.beginPath();
-    scaling_ctx.arc(90*vsw,50*vsh,100*vsh/6,Math.PI*2,0,true);
-    scaling_ctx.arc(scaling_value*vsw,50*vsh,30*vsh,Math.PI*2,0,true);
-    scaling_ctx.closePath();
-    scaling_ctx.fill();
+
+function updateScaling(){
+    scaling_value = scaling_slider.val();
     or_rate = Math.pow(SCALING_RATE_LIM,((scaling_value / 50) -1));
     $('#scaling_value').text(Math.round(or_rate*100)+'%');
     paint();
 }
-
-scaling_slider.width(window.innerHeight*20/100);
-scaling_slider.height(window.innerHeight*3/100);
 
 const mask_imgs = [];
 const mask_btns = [];
@@ -342,7 +356,7 @@ $('#input_random').click(function(){
         else
             random_icon_id = random_icon_id_buf;
     }
-    console.log(random_icon_id);
+    //console.log(random_icon_id);
     input_img.attr("src",'image/random_icon/'+RANDOM_ICON_NAMES[random_icon_id]);
     input_img.ready(function() {
         input_img[0].onload =function(){

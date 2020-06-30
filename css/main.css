@@ -165,7 +165,7 @@ body{
 }
 
 #edit_btns{
-    margin: calc(var(--vh) * 8) auto calc(var(--vh) * 7) auto;
+    margin: calc(var(--vh) * 5) auto calc(var(--vh) * 7) auto;
     width: calc(var(--vh) * 28);
 }
 
