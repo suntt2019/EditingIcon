@@ -5,7 +5,6 @@
 ### 技术栈
 * 完全前端开发
     * Jquery
-    * Bootstrap
     * HTML5 Canvas
     
 ### 任务分工
@@ -15,4 +14,3 @@
 ### TODO LIST
 * 压缩文件大小
 * 考虑修改滑动条样式（可以考虑canvas）
-* 适配手机版chrome的vh特例

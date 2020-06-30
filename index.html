@@ -17,22 +17,24 @@
     <div class="container">
         <h1 class="title">一起为村儿2020高考助力</h1>
         <!--模板选择区域-->
-        <div id="mask_btns_div"></div>
-
+        <div id="mask_btns_div" class="page_edit"></div>
+        <div id="save_hint" class="page_result">长按保存头像</div>
         <!--头像框（隐藏的）-->
         <div>
             <img src="image/default_icon.jpg" id="input_img">
         </div>
         <!--核心操作框-->
-        <canvas id="cover_canvas" width="256" height="256"></canvas>
+        <canvas id="cover_canvas" class="page_edit" width="256" height="256"></canvas>
+        <div id="result_div" class="page_result"></div>
         <!--<label>原头像缩放：</label>-->
         <!--缩放调节滑块-->
-        <input type="range" id="scaling_slider">
+        <!--<input type="range" id="scaling_slider" class="page_edit">-->
+        <canvas id="scaling_slider" class="page_edit" width="400px" height="60px" hidden></canvas>
         <!--缩放比例显示-->
         <label id="scaling_value" hidden>100%</label>
 
         <!--功能按钮-->
-        <div id="edit_btns">
+        <div id="edit_btns" class="page_edit">
             <button id="input_btn" class="edit_btn_0">选择底图</button><button id="save" class="edit_btn_1">生成头像</button>
             <button id="input_random" class="edit_btn_2">随机预设</button><button id="reset" class="edit_btn_3">重置调整</button>
             <!--<button id="reset_when_switching_masks">切换模板时自动重置</button>-->
@@ -42,21 +44,18 @@
             <!--头像读取框-->
             <input type="file" id="input_input" accept="image/*" hidden>
         </div>
+        <button id="one_more_btn" class="page_result">再做一张</button>
+        <img src="image/QR.png" id="QR" class="page_result">
         <div>
             <a id="footer" href="https://github.com/suntt2019/EditingIcon">
                 版权所有©中关村中学雨燕机器人社
                 <img id="swift_logo" src="image/swift_logo.png">
             </a>
 
-            <div id="result_div"></div>
+
         </div>
     </div>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        alert($('body').height());
-        alert(window.innerHeight);
-
-    </script>
     <script src="js/jcanvas.min.js"></script>
     <script src="js/main.js"></script>
 </body>

@@ -1,7 +1,7 @@
 @font-face {
     font-family: qing_ke_butter;/*庆科黄油体（免费商用）*/
-    src: url("../font/qing_ke_butter.woff"),
-         url("../font/qing_ke_butter.woff2"),
+    src: url("../font/qing_ke_butter.woff2"),
+         url("../font/qing_ke_butter.woff"),
          url("../font/qing_ke_butter.ttf");
 }
 
@@ -44,13 +44,16 @@ body{
     padding: 0;
 }
 
+#save_hint{
+    font-family: qing_ke_butter, sans-serif;
+}
 
 .chosen{
     border: #3ba4ff solid 2px;
 }
 
 
-#cover_canvas{
+#cover_canvas,#result_div>img{
     border: #41cdfa solid 1px;
     margin: 0 auto 0 auto;
     display: block;
@@ -58,24 +61,22 @@ body{
 
 #scaling_slider{
     display: block;
-    /*-webkit-appearance: none;*/
-    background: transparent;
-    outline:none;
-
+    /*background: transparent;*/
+    /*outline:none;*/
 }
 
-input[type=range]::-webkit-slider-thumb{
-    background: #3ba4ff;
-}
+/*input[type=range]::-webkit-slider-thumb{*/
+/*    background: #3ba4ff;*/
+/*}*/
 
-input[type=range]::-webkit-slider-runnable-track{
-    border: none;
-}
-
-
+/*input[type=range]::-webkit-slider-runnable-track{*/
+/*    border: none;*/
+/*}*/
 
 
-#edit_btns>button{
+
+
+#edit_btns>button,#one_more_btn{
     font-family: qing_ke_butter, sans-serif;
     padding: 0 1px 0 1px;
     margin: 0;
@@ -105,6 +106,11 @@ input[type=range]::-webkit-slider-runnable-track{
     display: block;
 }
 
+.page_result{
+    display: none;
+}
+
+
 /****************/
 
 .container{
@@ -115,7 +121,7 @@ input[type=range]::-webkit-slider-runnable-track{
 .title{
     font-size: calc(var(--vh) * 3.5);
     padding: calc(var(--vh) * 8) 0 0 0;
-    margin: 0vh auto calc(var(--vh) * 3) auto;
+    margin: 0 auto calc(var(--vh) * 3) auto;
     max-width: calc(var(--vh) * 45.5);
     letter-spacing: calc(var(--vh) * 1);
 }
@@ -136,14 +142,30 @@ input[type=range]::-webkit-slider-runnable-track{
     height: calc(var(--vh) * 10);
 }
 
+#save_hint{
+    font-size: calc(var(--vh) * 2.5);
+    letter-spacing: calc(var(--vh) * 1);
+    margin: calc(var(--vh) * 14.8 + 4px) auto calc(var(--vh) * 3) auto;
+    width: calc(var(--vh) * 17.5);
+    animation: twink 1s infinite alternate ease;
+}
+@keyframes twink {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:100;
+    }
+}
+
 #scaling_slider{
-    width: calc(var(--vh) * 15);
-    height: calc(var(--vh) * 3);
+    /*width: calc(var(--vh) * 20);*/
+    /*height: calc(var(--vh) * 3);*/
     margin: calc(var(--vh) * 1) auto calc(var(--vh) * 1) auto;
 }
 
 #edit_btns{
-    margin: calc(var(--vh) * 5) auto calc(var(--vh) * 5) auto;
+    margin: calc(var(--vh) * 8) auto calc(var(--vh) * 7) auto;
     width: calc(var(--vh) * 28);
 }
 
@@ -154,8 +176,21 @@ input[type=range]::-webkit-slider-runnable-track{
     height: calc(var(--vh) * 5);
 }
 
+#one_more_btn{
+    width: calc(var(--vh) * 14);
+    margin: calc(var(--vh) * 3) auto calc(var(--vh) * 4) auto;
+    font-size: calc(var(--vh) * 2.5);
+    letter-spacing: calc(var(--vh) * 0.6);
+}
+
+#QR{
+    width: calc(var(--vh) * 12);
+    height: calc(var(--vh) * 12);
+    margin: 0 auto;
+}
+
 #footer{
-    margin: calc(var(--vh) * 6.5) auto calc(var(--vh) * 2) auto;
+    margin: calc(var(--vh) * 3) auto calc(var(--vh) * 1) auto;
     width: calc(var(--vh) * 31);
     font-size: calc(var(--vh) * 1.5);
     letter-spacing: calc(var(--vh) * 0.2);
